@@ -11,24 +11,11 @@ noloop = 0;
 just = 0;
 justTimer=0;
 
-number = {"89608180261","89171494347","89270108986"};
+number = {"89111111111","89122222222","89233333333"};
 text = {"Invasion+detected!","Power+is+missing","Power+is+restored"};
 
 
 
---local function sendSms1(number, text)
---local request = ""
---request = "http://192.168.0.100:8766/?";
---request = request..'number='..number;
---request = request..'&message='..text;
---    http.get(request, nil, function(code, data)     
---        if (code < 0) then       
---        print("HTTP request failed")     
---        else       
---        print(code, data)     
---        end   
---    end)
---end
 
 inc = 1;
 attempt = 0;
@@ -68,7 +55,7 @@ tmr.alarm(2,10, 1, function ()
         if (noloop == 1 and security == 1 and just == 0) then
             if (flag == 0) then
                 print("Invasion")
-            --request = "http://192.168.0.100:8766/send.html?smsto=89608180261&smsbody=Invasion+detected!&smstype=sms"
+           
                 tmr.start(3)
                 flag = 1; 
             end  
@@ -79,8 +66,7 @@ tmr.alarm(2,10, 1, function ()
         end 
         if (gpio.read(2) == 0) then
             if (pwr == 0) then
-            --request = "http://192.168.0.100:8766/send.html?smsto=89608180261&smsbody=Invasion+detected!&smstype=sms"
-                --tmr.start(3)
+            
                 print(text[2])
                 for inc=1,3,1 do 
                     print(inc)
